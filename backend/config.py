@@ -10,6 +10,13 @@ class Settings(BaseSettings):
     GEMINI_API_KEY: str
     GEMINI_REGION: str
 
+    # Vertex AI使用フラグ
+    USE_VERTEX_AI: bool = False
+
+    # GCP設定
+    GCP_PROJECT_ID: str = ""
+    GCP_LOCATION: str = ""
+
 
 settings = Settings()
 
