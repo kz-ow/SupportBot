@@ -1,0 +1,4 @@
+# 依存関係の管理
+slack-bolt==1.27.0
+google-generativeai==0.8.5
+pydantic-settings==2.12.0

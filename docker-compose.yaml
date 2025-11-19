@@ -1,0 +1,32 @@
+# バックエンド用の環境を構築
+version: "3.12"
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      network: host
+    env_file:
+      - .env
+    command: ["python3", "app.py"]
+    container_name: slack-support-bot-backend
+    ports:
+      - "8000:8000"   
+    volumes:
+      - ./backend:/backend:cached
+      - ./.env:/backend/.env:ro
+    environment:
+      - SLACK_BOT_TOKEN=${SLACK_BOT_TOKEN}
+      - SLACK_APP_TOKEN=${SLACK_APP_TOKEN}
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - GEMINI_REGION=${GEMINI_REGION}
+    networks:
+      - public_network
+    dns:
+      - 8.8.8.8
+      - 1.1.1.1
+
+networks:
+  public_network:
+    driver: bridge
