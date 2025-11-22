@@ -1,4 +1,11 @@
 # 依存関係の管理
+
+# Slack Botのライブラリ
 slack-bolt==1.27.0
+
+# Gemini APIクライアント
 google-generativeai==0.8.5
+google-cloud-aiplatform==1.128.0
+
+# API情報の管理
 pydantic-settings==2.12.0

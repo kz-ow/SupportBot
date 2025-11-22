@@ -10,6 +10,17 @@ class Settings(BaseSettings):
     GEMINI_API_KEY: str
     GEMINI_REGION: str
 
+    # Vertex AI使用フラグ
+    USE_VERTEX_AI: bool = False
+
+    # GCP設定
+    GCP_PROJECT_ID: str = ""
+    GCP_LOCATION: str = ""
+
+    # Geminiモデル名設定
+    GEMINI_FLASH_MODEL_NAME: str = "gemini-1.5-flash"
+    GEMINI_PRO_MODEL_NAME: str = "gemini-3.0-pro"
+
 
 settings = Settings()
 
