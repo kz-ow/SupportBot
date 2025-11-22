@@ -17,6 +17,10 @@ class Settings(BaseSettings):
     GCP_PROJECT_ID: str = ""
     GCP_LOCATION: str = ""
 
+    # Geminiモデル名設定
+    GEMINI_FLASH_MODEL_NAME: str = "gemini-1.5-flash"
+    GEMINI_PRO_MODEL_NAME: str = "gemini-3.0-pro"
+
 
 settings = Settings()
 

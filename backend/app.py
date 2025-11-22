@@ -18,8 +18,8 @@ if USE_VERTEX_AI:
     vertexai.init(project=settings.GCP_PROJECT_ID, location=settings.GCP_LOCATION)
     
     # モデルの初期化
-    flash_model = GenerativeModel("gemini-1.5-flash")
-    pro_model = GenerativeModel("gemini-2.5-pro")
+    flash_model = GenerativeModel(str(settings.GEMINI_FLASH_MODEL_NAME))
+    pro_model = GenerativeModel(str(settings.GEMINI_PRO_MODEL_NAME))
 
     print("🚀 Vertex AI モードで起動しました")
 
@@ -29,6 +29,12 @@ else:
     
     # Gemini APIの初期化
     genai.configure(api_key=settings.GEMINI_API_KEY)
+
+    print("=== 利用可能なモデル一覧 ===")
+    for m in genai.list_models():
+        if 'generateContent' in m.supported_generation_methods:
+            # モデル名を表示 (例: models/gemini-1.5-pro)
+            print(m.name.replace("models/", ""))
 
     # 各モデルの初期化
     flash_model = genai.GenerativeModel("gemini-1.5-flash")

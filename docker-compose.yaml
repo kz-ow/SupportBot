@@ -25,6 +25,8 @@ services:
       - GCP_PROJECT_ID=${GCP_PROJECT_ID}
       - GCP_LOCATION=${GCP_LOCATION}
       - USE_VERTEX_AI=${USE_VERTEX_AI}
+      - GEMINI_FLASH_MODEL_NAME=${GEMINI_FLASH_MODEL_NAME}
+      - GEMINI_PRO_MODEL_NAME=${GEMINI_PRO_MODEL_NAME}
     networks:
       - public_network
     dns:
