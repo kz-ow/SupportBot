@@ -9,8 +9,9 @@ app = App(token=settings.SLACK_BOT_TOKEN)
 # 環境変数で切り替えフラグを取得
 USE_VERTEX_AI = settings.USE_VERTEX_AI
 
+
 if USE_VERTEX_AI:
-    # === Vertex AI モード (企業向け) ===
+    # === Vertex AI モード ===
     import vertexai
     from vertexai.generative_models import GenerativeModel
     
@@ -37,8 +38,8 @@ else:
             print(m.name.replace("models/", ""))
 
     # 各モデルの初期化
-    flash_model = genai.GenerativeModel("gemini-1.5-flash")
-    pro_model = genai.GenerativeModel("gemini-1.5-pro")
+    flash_model = genai.GenerativeModel(str(settings.GEMINI_FLASH_MODEL_NAME))
+    pro_model = genai.GenerativeModel(str(settings.GEMINI_PRO_MODEL_NAME))
 
     print("✨ Gemini API (AI Studio) モードで起動しました")
 
