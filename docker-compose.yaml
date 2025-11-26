@@ -16,17 +16,24 @@ services:
     volumes:
       - ./backend:/backend:cached
       - ./.env:/backend/.env:ro
+      - ./service-account.json:/model/service-account.json:ro
     environment:
       - SLACK_BOT_TOKEN=${SLACK_BOT_TOKEN}
       - SLACK_APP_TOKEN=${SLACK_APP_TOKEN}
       - GEMINI_API_KEY=${GEMINI_API_KEY}
       - GEMINI_REGION=${GEMINI_REGION}
-      - GOOGLE_APPLICATION_CREDENTIALS=${GOOGLE_APPLICATION_CREDENTIALS}
+      - GOOGLE_APPLICATION_CREDENTIALS=/model/service-account.json
       - GCP_PROJECT_ID=${GCP_PROJECT_ID}
       - GCP_LOCATION=${GCP_LOCATION}
       - USE_VERTEX_AI=${USE_VERTEX_AI}
       - GEMINI_FLASH_MODEL_NAME=${GEMINI_FLASH_MODEL_NAME}
       - GEMINI_PRO_MODEL_NAME=${GEMINI_PRO_MODEL_NAME}
+      - GITHUB_TOKEN=${GITHUB_TOKEN}
+      - GITHUB_REPO_OWNER=${GITHUB_REPO_OWNER}
+      - GITHUB_REPO_NAME=${GITHUB_REPO_NAME}
+      - GITHUB_BRANCH_NAME=${GITHUB_BRANCH_NAME}
+      - CHROMA_COLLECTION_NAME=${CHROMA_COLLECTION_NAME}
+      - CHROMA_DB_PATH=${CHROMA_DB_PATH}
     networks:
       - public_network
     dns:

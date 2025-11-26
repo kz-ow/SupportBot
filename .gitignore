@@ -1,5 +1,5 @@
 # Byte-compiled / optimized / DLL files
-__pycache__/
+*__pycache__/
 *.py[cod]
 *$py.class
 
@@ -176,3 +176,9 @@ cython_debug/
 docker-compose_dev.yml
 
 config_prod.py
+
+# GCPサービスアカウントキー
+*service-account.json
+
+# vectorstoreディレクトリ
+*vector_db/
