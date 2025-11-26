@@ -2,7 +2,7 @@
 
 # ── Stage 1: Builder (依存関係のビルド) ──
 FROM python:3.12-slim AS builder
-WORKDIR /app
+WORKDIR /backend
 
 # pip 周りのパフォーマンスチューニング
 ENV PIP_DISABLE_PIP_VERSION_CHECK=1 \
@@ -20,7 +20,7 @@ RUN pip install --upgrade pip \
 
 # ── Stage 2: Runtime (実行用イメージ) ──
 FROM python:3.12-slim AS runner
-WORKDIR /app
+WORKDIR /backend
 
 # 最小限のランタイム依存のみを残す
 RUN apt-get update \
@@ -34,7 +34,7 @@ RUN pip install --no-index --find-links=/wheels -r requirements.txt \
  && rm -rf /wheels
 
 # アプリケーションコードを配置
-COPY backend /app
+COPY backend /backend
 
 # セキュリティ向上のため非 root ユーザーを作成
 RUN useradd --create-home appuser
@@ -43,4 +43,6 @@ USER appuser
 # 環境変数
 ENV PYTHONUNBUFFERED=1 \
     APP_ENV=production \
-    LOG_LEVEL=info
+    LOG_LEVEL=info \
+    LANG=C.UTF-8 \
+    LC_ALL=C.UTF-8

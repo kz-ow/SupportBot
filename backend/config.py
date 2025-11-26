@@ -14,12 +14,23 @@ class Settings(BaseSettings):
     USE_VERTEX_AI: bool = False
 
     # GCP設定
+    GOOGLE_APPLICATION_CREDENTIALS: str = ""
     GCP_PROJECT_ID: str = ""
     GCP_LOCATION: str = ""
 
     # Geminiモデル名設定
     GEMINI_FLASH_MODEL_NAME: str = "gemini-1.5-flash"
     GEMINI_PRO_MODEL_NAME: str = "gemini-3.0-pro"
+
+    # === GitHub RAG設定 (追加) ===
+    GITHUB_TOKEN: str
+    GITHUB_REPO_OWNER: str
+    GITHUB_REPO_NAME: str
+    GITHUB_BRANCH_NAME: str = "main"
+    
+    # Vector DBの保存先
+    CHROMA_DB_PATH: str = "./chroma_db"
+    CHROMA_COLLECTION_NAME: str = "repo_data"
 
 
 settings = Settings()
