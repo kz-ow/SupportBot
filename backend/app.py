@@ -41,7 +41,7 @@ def echo_message(event, say):
         response = flash_model_engine.query(user_text)
 
     # 結果をスレッドで返信
-    say(response.text, thread_ts=thread_ts)
+    say(str(response), thread_ts=thread_ts)
 
 # Reactionが追加された際の処理（例: メモリアクションで要約保存）
 @app.event("reaction_added")
@@ -108,8 +108,8 @@ def handle_reaction(event, say):
        print(f"❌ エラーが発生しました: {e}")
 
 
-
 # ソケットモードでアプリを起動
 if __name__ == "__main__":
     # Slackアプリをソケットモードで起動
     SocketModeHandler(app, settings.SLACK_APP_TOKEN).start()
+
