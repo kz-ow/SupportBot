@@ -16,7 +16,7 @@ class Settings(BaseSettings):
     # GCP設定
     GOOGLE_APPLICATION_CREDENTIALS: str = ""
     GCP_PROJECT_ID: str = ""
-    GCP_LOCATION: str = ""
+    GCP_LOCATION: str = "global"
 
     # Geminiモデル名設定
     GEMINI_FLASH_MODEL_NAME: str = "gemini-1.5-flash"
