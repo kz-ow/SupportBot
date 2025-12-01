@@ -4,8 +4,7 @@
 slack-bolt==1.27.0
 
 # Gemini APIクライアント
-google-generativeai==0.8.5
-google-cloud-aiplatform==1.128.0
+google-genai==1.52.0
 
 # API情報の管理
 pydantic-settings==2.12.0
@@ -16,11 +15,10 @@ llama-index-vector-stores-chroma==0.5.3
 
 # GeminiとGithub連携に必要なライブラリ
 llama-index-core==0.14.8
-llama-index-llms-gemini==0.6.1
-llama-index-embeddings-gemini==0.4.1
+llama-index-llms-google-genai==0.7.4
+llama-index-embeddings-google-genai==0.3.1
 llama-index-readers-github==0.9.0
+
+# 環境変数管理
 python-dotenv==1.2.1
 
-# Vertex AI用ライブラリ
-llama-index-llms-vertex==0.6.1
-llama-index-embeddings-vertex==0.4.1
